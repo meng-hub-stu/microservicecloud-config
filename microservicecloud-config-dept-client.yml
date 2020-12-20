@@ -32,7 +32,7 @@ eureka:
   client:                                                   #将客户端注册经eureka服务列表内
     service-url:
       #defaultZone: http://localhost:7001/eureka
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/
   instance:
     instance-id: microservicecloud-dept8001     #修改在eureka中的标识信息
     prefer-ip-address: true                     #修改悬浮在eureka标识上时左下角提示ip信息
@@ -45,7 +45,7 @@ info:          #点击标识时，可以有说明信息的json，需要导入act
   
   ---
 server:
-  port: 8001
+  port: 8002
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
   type-aliases-package: com.atguigu.springcloud.entities    # 所有Entity别名类所在包
@@ -72,7 +72,7 @@ eureka:
   client:                                                   #将客户端注册经eureka服务列表内
     service-url:
       #defaultZone: http://localhost:7001/eureka
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/
   instance:
     instance-id: microservicecloud-dept8001     #修改在eureka中的标识信息
     prefer-ip-address: true                     #修改悬浮在eureka标识上时左下角提示ip信息
