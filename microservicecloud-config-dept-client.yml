@@ -41,3 +41,42 @@ info:          #点击标识时，可以有说明信息的json，需要导入act
   company.name: www.atguigu.com
   build.artifactId: $project.artifactId$
   build.version: $project.version$
+  
+---
+server:
+  port: 8002
+spring:
+   profiles: test
+   application:
+    name: microservicecloud-config-dept-client                           #该微服务在外面暴露的名称提供给eureka（客户端可以通过这个名字在eureka中获取该微服务的信息和地址）
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysql驱动包
+    url: jdbc:mysql://localhost:3306/cloudDB02              # 数据库名称
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  type-aliases-package: com.atguigu.springcloud.entities    # 所有Entity别名类所在包
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
+        
+eureka:
+  client:                                                   #将客户端注册经eureka服务列表内
+    service-url:
+      #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: dept8001     #修改在eureka中的标识信息
+    prefer-ip-address: true                     #修改悬浮在eureka标识上时左下角提示ip信息
+    
+info:          #点击标识时，可以有说明信息的json，需要导入actuator的依赖，进行监控
+  app.name: atguigu-microservicecloud                      
+  company.name: www.atguigu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
